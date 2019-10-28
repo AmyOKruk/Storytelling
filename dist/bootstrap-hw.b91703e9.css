@@ -325,6 +325,14 @@ button {
 
 }
 
+.hide {
+  display: flex;
+  max-width: 375px;
+  justify-content: center;
+  margin: 5% auto 0;
+  display: none;
+}
+
 @media (max-width:900px) {
 
   #chart-10 {
@@ -337,8 +345,11 @@ button {
   #chart-10 {
       display: none;
   }
-  #matrix-mobile {
+  .hide {
       display: block;
+  }
+  .col-12 {
+    display: none;
   }
 }
 }
@@ -355,5 +366,6 @@ button {
     line-height: 1.3;
     font-size: 14px;
 }
+
 
 /*# sourceMappingURL=/bootstrap-hw.b91703e9.css.map */
