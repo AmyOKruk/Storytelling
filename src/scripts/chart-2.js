@@ -75,6 +75,7 @@ function ready(data) {
     .style('text-anchor', 'start')
     .attr('transform', 'rotate(-45)')
     .style('font-size', 10)
+    .style('opacity', 1)
     .attr('dy', -3)
     .attr('id', function(d) {
       return d.toLowerCase().replace(/[^a-z]*/g, '')
@@ -94,6 +95,7 @@ function ready(data) {
     .call(d3.axisLeft(y).tickSize(0))
     .selectAll('text')
     .style('font-size', 10)
+    .style('opacity', 1)
     .attr('class', function(d) {
       return d.toLowerCase().replace(/[^a-z]*/g, '') + ' ' + 'y_label'
     })
