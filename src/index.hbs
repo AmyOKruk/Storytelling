@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/music.png">
+
+</head>
+
+<body>
+
+  {{> base/headline }}
+
+  <div class="wrapper">
+    <div class="story-body topper" id='intro'>
+      <p class="body-text serif">Music has never been more accessible. With the rise of music-streaming platforms, listeners can play the majority of songs ever made by anyone for free. Spotify — with 232 million monthly users — leads the pack.</p>
+      <p class="body-text serif">And wherever you are, whatever you listen to, Spotifiy keeps track of it all. The music service publishes top song charts for 60-plus countries around the world everyday. </p>
+      <p class="body-text serif">So how do these countries stack up against each other? Who likes what and which countries like the same songs? Let’s take a look.</p>
+    </div>
+
+    <div class="chart-section">
+      <div class="chart-row">
+          <div class="chart">
+              <p class="chart-title">From Peru to Panama, Latin America listens to the same tunes</p>
+              <p class="chart-subhead">Spotify publishes top 200 song charts for more than 60 countries worldwide. Countries are scored based on how many song choices they had in common.</p>
+              <div class="story-body scaled">
+                  <p class="scaled">The same tops songs<img class='scale' src="images/scale-01.png">Completely different top songs</p>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div class='hide'>
+      <img src="images/spotify-mobile.png">
+    </div>
+
+    <div class="container2">
+      {{> homework-07/matrix }}
+      <script src="scripts/matrix.js"></script>
+    </div>
+
+    <div class="container3">
+      {{> homework-07/chart-2 }}
+    </div>
+
+
+
+
+    <div class="button">
+      <button id="hello"><a href='https://github.com/AmyOKruk/Storytelling'>View the code</a></button>
+    </div>
+
+    <div class="footer">
+        <p class="note">Data and methods:</p>
+        <!-- <p class="note">Canada's<a href="https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/details/page.cfm?Lang=E&Geo1=PR&Code1=01&Geo2=&Code2=&SearchText=Canada&SearchType=Begins&SearchPR=01&B1=All&TABID=1&type=0"> 2016 census data.</a></p> -->
+        <p class="note">To collect the data, I scraped Spotify’s Top 200 songs per country for the week of 06/21/2019 to 06/28/2019.</p>  
+        <p class="note">Spotify’s top song charts heavily favour countries from North America and Europe. While I included every available country, nearly all of Africa and many parts of Asia are not represented here.</p>    
+        <p class="note">To create the correlation matrix, I calculated the jaccard index of different top 200 song lists. I used a clustermap method to hierarchically order the data by similarity and then by continent.</p>  
+        <p class="note">One limitation of this analysis is that the data represents a single week, offering us a snapshot of trends. More concrete observations could be made if the data represented a larger time period.</p>  
+    </div>
+  </div>
+  <script src="scripts/scrollytelling.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles/scrollytelling.css">
+  <script>
+    var nyan = document.getElementById('nyan');
+    var nyanBtn = document.getElementById('nyan-btn');
+
+function playPause(song){
+   if (song.paused && song.currentTime >= 0 && !song.ended) {
+      song.play();
+   } else {
+      song.pause();
+   }
+}
+
+function reset(btn, song){
+   if(btn.classList.contains('playing')){
+      btn.classList.toggle('playing');
+   }
+   song.pause();
+   song.currentTime = 0;
+}
+
+function progress(btn, song){
+   setTimeout(function(){
+      var end = song.duration; 
+      var current = song.currentTime;
+      var percent = current/(end/100);
+      //check if song is at the end
+      if(current==end){
+         reset(btn, song);
+      }
+      //set inset box shadow
+      btn.style.boxShadow = "inset " + btn.offsetWidth * (percent/100) + "px 0px 0px 0px rgba(0,0,0,0.125)"
+      //call function again
+      progress(btn, song);     
+   }, 1000);
+}
+
+nyanBtn.addEventListener('click', function(){
+   nyanBtn.classList.toggle('playing');
+   playPause(nyan);
+   progress(nyanBtn, nyan);
+});
+
+  </script>
+</body>
+
+</html>
