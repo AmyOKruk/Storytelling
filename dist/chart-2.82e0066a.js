@@ -28515,12 +28515,12 @@ function ready(data) {
   // Build X scales and axis:
 
   var x = d3.scaleBand().range([0, width]).domain(myGroups).padding(0.05);
-  svg.append('g').call(d3.axisTop(x).tickSize(0)).selectAll('text').style('text-anchor', 'start').attr('transform', 'rotate(-45)').style('font-size', 10).attr('dy', -3).attr('id', function (d) {
+  svg.append('g').call(d3.axisTop(x).tickSize(0)).selectAll('text').style('text-anchor', 'start').attr('transform', 'rotate(-45)').style('font-size', 10).style('opacity', 1).attr('dy', -3).attr('id', function (d) {
     return d.toLowerCase().replace(/[^a-z]*/g, '');
   }).attr('class', 'x_label').select('.domain').remove(); // Build Y scales and axis:
 
   var y = d3.scaleBand().range([height, 0]).domain(myVars).padding(0.05);
-  svg.append('g').call(d3.axisLeft(y).tickSize(0)).selectAll('text').style('font-size', 10).attr('class', function (d) {
+  svg.append('g').call(d3.axisLeft(y).tickSize(0)).selectAll('text').style('font-size', 10).style('opacity', 1).attr('class', function (d) {
     return d.toLowerCase().replace(/[^a-z]*/g, '') + ' ' + 'y_label';
   }).attr('dx', -3).select('.domain').remove(); // Build color scale
 

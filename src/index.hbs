@@ -105,6 +105,42 @@ nyanBtn.addEventListener('click', function(){
    progress(nyanBtn, nyan);
 });
 
+document.getElementById("despacito-btn").addEventListener('click', function() {
+  document.getElementById("despacito-btn").classList.toggle('playing');
+  playPause(document.getElementById('despacito'));
+  progress(document.getElementById("despacito-btn"), document.getElementById('despacito'))
+});
+
+document.getElementById("badbunny-btn").addEventListener('click', function() {
+  document.getElementById("badbunny-btn").classList.toggle('playing');
+  playPause(document.getElementById('badbunny'));
+  progress(document.getElementById("badbunny-btn"), document.getElementById('badbunny'))
+});
+
+document.getElementById("yatra-btn").addEventListener('click', function() {
+  document.getElementById("yatra-btn").classList.toggle('playing');
+  playPause(document.getElementById('yatra'));
+  progress(document.getElementById("yatra-btn"), document.getElementById('yatra'))
+});
+
+document.getElementById("londra-btn").addEventListener('click', function() {
+  document.getElementById("londra-btn").classList.toggle('playing');
+  playPause(document.getElementById('londra'));
+  progress(document.getElementById("londra-btn"), document.getElementById('londra'))
+});
+
+document.getElementById("sert-btn").addEventListener('click', function() {
+  document.getElementById("sert-btn").classList.toggle('playing');
+  playPause(document.getElementById('sert'));
+  progress(document.getElementById("sert-btn"), document.getElementById('sert'))
+});
+
+document.getElementById("mar-btn").addEventListener('click', function() {
+  document.getElementById("mar-btn").classList.toggle('playing');
+  playPause(document.getElementById('mar'));
+  progress(document.getElementById("mar-btn"), document.getElementById('mar'))
+});
+
   </script>
 </body>
 
